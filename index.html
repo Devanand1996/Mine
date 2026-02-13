@@ -15,7 +15,6 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #FFE5EC 0%, #FFC4D6 50%, #FFB3C6 100%);
             min-height: 100vh;
             overflow-x: hidden;
@@ -79,19 +78,10 @@
             display: flex;
         }
 
-        .music-player:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
-        }
-
         .music-toggle {
             font-size: 24px;
             cursor: pointer;
             transition: transform 0.3s ease;
-        }
-
-        .music-toggle:hover {
-            transform: rotate(15deg) scale(1.1);
         }
 
         .music-toggle.playing {
@@ -147,7 +137,6 @@
             border-radius: 50%;
             background: #FFE5EC;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .progress-dot.completed {
@@ -309,10 +298,6 @@
             box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
         }
 
-        .btn:active {
-            transform: translateY(-1px);
-        }
-
         .task-counter {
             text-align: center;
             color: #FF69B4;
@@ -349,7 +334,7 @@
             background: #FFF;
         }
 
-        input[type="text"]:focus, input[type="date"]:focus, input[type="email"]:focus, textarea:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: #FF69B4;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
@@ -382,22 +367,6 @@
             font-weight: 600;
             position: relative;
             overflow: hidden;
-        }
-
-        .choice-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.2) 0%, transparent 70%);
-            transform: scale(0);
-            transition: transform 0.5s ease;
-        }
-
-        .choice-btn:hover::before {
-            transform: scale(1);
         }
 
         .choice-btn:hover {
@@ -553,7 +522,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transform: translateY(100%);
             transition: transform 1s ease;
-            overflow: hidden;
+            overflow-y: auto;
             z-index: 1;
         }
 
@@ -567,34 +536,6 @@
             font-size: 15px;
             color: #FF1493;
             font-weight: 600;
-        }
-
-        /* Photo Upload Preview */
-        .photo-upload-container {
-            margin: 30px 0;
-        }
-
-        .photo-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .photo-preview-item {
-            aspect-ratio: 1;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid #FFB6C1;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
-            position: relative;
-            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
-        }
-
-        .photo-preview-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         /* Progress bar */
@@ -675,6 +616,7 @@
             transition: all 0.4s ease;
             cursor: pointer;
             border: 3px solid #FFB6C1;
+            aspect-ratio: 1;
         }
 
         .photo-item:hover {
@@ -684,18 +626,12 @@
 
         .photo-placeholder {
             width: 100%;
-            aspect-ratio: 1;
+            height: 100%;
             background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 80px;
-        }
-
-        .photo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         .photo-caption {
@@ -743,11 +679,9 @@
             position: absolute;
             width: 180px;
             height: 180px;
-            border: 25px solid;
-            border-image: linear-gradient(135deg, #FFD700, #FFA500, #FFD700) 1;
+            border: 25px solid #FFD700;
             border-radius: 50%;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6),
-                        inset 0 0 40px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), inset 0 0 40px rgba(255, 215, 0, 0.3);
         }
 
         .ring-diamond {
@@ -763,7 +697,7 @@
             filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.8));
         }
 
-        .ring-diamond::before {
+        .ring-diamond::after {
             content: '';
             position: absolute;
             top: 40px;
@@ -891,24 +825,6 @@
             box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
             transition: all 0.3s ease;
             border: 3px solid #FFB6C1;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reason-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
-            transform: scale(0);
-            transition: transform 0.5s ease;
-        }
-
-        .reason-card:hover::before {
-            transform: scale(1);
         }
 
         .reason-card:hover {
@@ -1020,6 +936,10 @@
             display: block;
             margin: 25px auto;
             box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            aspect-ratio: 4/3;
         }
 
         /* Confetti */
@@ -1027,8 +947,8 @@
             position: fixed;
             width: 12px;
             height: 12px;
-            position: absolute;
             animation: confetti-fall 3s linear;
+            z-index: 9999;
         }
 
         @keyframes confetti-fall {
@@ -1046,7 +966,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1000;
+            z-index: 9998;
         }
 
         .firework {
@@ -1088,8 +1008,6 @@
             margin: 30px 0;
             text-align: center;
             border: 3px dashed #FFB6C1;
-            position: relative;
-            overflow: hidden;
         }
 
         .secret-text {
@@ -1100,7 +1018,6 @@
             font-size: 16px;
             font-weight: 600;
             transition: all 0.5s ease;
-            user-select: none;
         }
 
         .secret-message:hover .secret-text {
@@ -1141,7 +1058,6 @@
 
         .record-btn.recording {
             animation: pulse-record 1s infinite;
-            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
         }
 
         @keyframes pulse-record {
@@ -1167,8 +1083,8 @@
             .screen { padding: 35px 25px; }
             
             .music-player.show, .progress-tracker.show, .days-counter.show {
-                position: static;
-                margin: 15px auto;
+                position: fixed;
+                margin: 0 auto;
                 max-width: 300px;
             }
             
@@ -1202,6 +1118,27 @@
 <body>
     <!-- Floating hearts background -->
     <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Music Player -->
+    <div class="music-player show" id="musicPlayer">
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+        <span class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔊</span>
+        <span class="music-info">🎵 Our Song</span>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="progress-tracker show" id="progressTracker">
+        <div class="progress-tracker-title">💝 Our Journey</div>
+        <div class="progress-dots" id="progressDots"></div>
+    </div>
+
+    <!-- Days Together Counter -->
+    <div class="days-counter show" id="daysCounter">
+        <div class="days-number" id="daysNumber">0</div>
+        <div class="days-label">Days Since We Met 💕</div>
+    </div>
 
     <div class="container">
         <!-- Entry Question Screen -->
@@ -1450,33 +1387,27 @@ I want you to know that...
                 
                 <div class="photo-gallery">
                     <div class="photo-item">
-                        <img src="path/to/photo1.jpg" alt="Our First Date" class="photo-img" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex'">
-                        <div class="photo-placeholder" style="display: flex;">💕</div>
+                        <div class="photo-placeholder">💕</div>
                         <div class="photo-caption">Our First Date 💑<br>The day everything began</div>
                     </div>
                     <div class="photo-item">
-                        <img src="path/to/photo2.jpg" alt="That Special Moment" class="photo-img" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex'">
-                        <div class="photo-placeholder" style="display: flex;">💖</div>
+                        <div class="photo-placeholder">💖</div>
                         <div class="photo-caption">That Special Moment 💫<br>When I knew you were the one</div>
                     </div>
                     <div class="photo-item">
-                        <img src="path/to/photo3.jpg" alt="Our Adventure" class="photo-img" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex'">
-                        <div class="photo-placeholder" style="display: flex;">🌍</div>
+                        <div class="photo-placeholder">🌍</div>
                         <div class="photo-caption">Our Adventure Together 🌍<br>Making memories everywhere</div>
                     </div>
                     <div class="photo-item">
-                        <img src="path/to/photo4.jpg" alt="Just Us" class="photo-img" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex'">
-                        <div class="photo-placeholder" style="display: flex;">💑</div>
+                        <div class="photo-placeholder">💑</div>
                         <div class="photo-caption">Just Us Two 💕<br>My favorite moments with you</div>
                     </div>
                     <div class="photo-item">
-                        <img src="path/to/photo5.jpg" alt="Celebration" class="photo-img" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex'">
-                        <div class="photo-placeholder" style="display: flex;">🎉</div>
+                        <div class="photo-placeholder">🎉</div>
                         <div class="photo-caption">Celebrating Love 🎉<br>Every celebration is better with you</div>
                     </div>
                     <div class="photo-item">
-                        <img src="path/to/photo6.jpg" alt="Forever" class="photo-img" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex'">
-                        <div class="photo-placeholder" style="display: flex;">💍</div>
+                        <div class="photo-placeholder">💍</div>
                         <div class="photo-caption">Forever & Always 💍<br>Looking forward to our future</div>
                     </div>
                 </div>
@@ -1612,10 +1543,6 @@ I want you to know that...
                     <button class="share-btn" onclick="shareViaWhatsApp()">📱 Send via WhatsApp</button>
                     <button class="share-btn email" onclick="shareViaEmail()">📧 Send via Email</button>
                 </div>
-
-                <div style="margin-top: 30px; display: none;">
-                    <input type="email" id="emailInput" placeholder="Enter email address" style="max-width: 400px; margin: 0 auto; display: block;">
-                </div>
             </div>
         </div>
     </div>
@@ -1648,7 +1575,6 @@ I want you to know that...
         };
 
         // Initialize on page load
-       // Initialize on page load
         window.onload = function() {
             createHearts();
             initProgressDots();
@@ -1663,6 +1589,11 @@ I want you to know that...
             document.querySelector('.music-player').classList.add('show');
             document.querySelector('.progress-tracker').classList.add('show');
             document.querySelector('.days-counter').classList.add('show');
+            
+            // Hide welcome screen and all task screens initially
+            const welcomeScreen = document.getElementById('welcome');
+            welcomeScreen.style.display = 'none';
+            welcomeScreen.classList.remove('active');
         };
 
         // Create floating hearts
@@ -1687,11 +1618,13 @@ I want you to know that...
         // Initialize progress dots
         function initProgressDots() {
             const dotsContainer = document.getElementById('progressDots');
-            for (let i = 0; i < 8; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'progress-dot';
-                dot.id = `dot${i + 1}`;
-                dotsContainer.appendChild(dot);
+            if (dotsContainer) {
+                for (let i = 0; i < 8; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'progress-dot';
+                    dot.id = `dot${i + 1}`;
+                    dotsContainer.appendChild(dot);
+                }
             }
         }
 
@@ -1733,7 +1666,7 @@ I want you to know that...
                 toggle.classList.remove('playing');
                 musicPlaying = false;
             } else {
-                music.play();
+                music.play().catch(e => console.log('Audio play failed:', e));
                 toggle.classList.add('playing');
                 musicPlaying = true;
             }
@@ -1786,18 +1719,22 @@ I want you to know that...
             // Hide all screens
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
+                screen.style.display = 'none';
             });
             
             // Show requested screen
             const screen = document.getElementById(screenId);
             if (screen) {
+                screen.style.display = 'block';
                 screen.classList.add('active');
                 currentTask = screenId;
                 viewedScreens.add(screenId);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 
                 // Initialize specific tasks only if not viewed before
-                if (screenId === 'task8' && !canvas) initCanvas();
+                if (screenId === 'task8' && !canvas) {
+                    initCanvas();
+                }
             }
         }
 
@@ -1809,7 +1746,8 @@ I want you to know that...
                 setTimeout(() => {
                     dot.classList.remove('active');
                     if (taskNum < 8) {
-                        document.getElementById(`dot${taskNum + 1}`).classList.add('active');
+                        const nextDot = document.getElementById(`dot${taskNum + 1}`);
+                        if (nextDot) nextDot.classList.add('active');
                     }
                 }, 300);
             }
@@ -1983,9 +1921,6 @@ I want you to know that...
                 recordingStartTime = Date.now();
                 btn.classList.add('recording');
                 status.textContent = 'Recording... Click to stop';
-                
-                // Simulate recording (in real app, you'd use MediaRecorder API)
-                // For now, we'll just track that they attempted to record
             } else {
                 isRecording = false;
                 btn.classList.remove('recording');
@@ -2126,18 +2061,18 @@ I want you to know that...
             setInterval(createConfetti, 3000);
         }
 
-        // Share functions - SEND TO YOUR WHATSAPP/EMAIL
+        // Share functions
         function shareViaWhatsApp() {
             const message = generateShareMessage();
             const encodedMessage = encodeURIComponent(message);
             // Replace with YOUR phone number (include country code, e.g., 919876543210 for India)
-            const yourPhoneNumber = '919876543210'; // CHANGE THIS TO YOUR NUMBER
+            const yourPhoneNumber = '918870515885'; // CHANGE THIS TO YOUR NUMBER
             window.open(`https://wa.me/${yourPhoneNumber}?text=${encodedMessage}`, '_blank');
         }
 
         function shareViaEmail() {
             // Replace with YOUR email address
-            const yourEmail = 'your.email@example.com'; // CHANGE THIS TO YOUR EMAIL
+            const yourEmail = 'devanandramachandranc@gmail.com'; // CHANGE THIS TO YOUR EMAIL
             
             const subject = encodeURIComponent('Kavya\'s Valentine\'s Day Journey Responses 💕');
             const body = encodeURIComponent(generateShareMessage());
