@@ -467,76 +467,253 @@
             opacity: 1;
         }
 
-        /* Love Letter Effect */
-        .letter-envelope {
-            width: 300px;
-            height: 200px;
-            margin: 40px auto;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+        /* Love Letter Improvements */
+.letter-envelope {
+    width: 300px;
+    height: 200px;
+    margin: 40px auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        .letter-envelope:hover {
-            transform: scale(1.05);
-        }
+.letter-envelope:hover {
+    transform: scale(1.05);
+}
 
-        .envelope-body {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
-            border-radius: 15px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
-        }
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    overflow: hidden; /* Add this to hide letter initially */
+}
 
-        .envelope-flap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            clip-path: polygon(0 0, 50% 70%, 100% 0);
-            transform-origin: top;
-            transition: transform 1s ease;
-            z-index: 2;
-        }
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+    clip-path: polygon(0 0, 50% 70%, 100% 0);
+    transform-origin: top;
+    transition: transform 1s ease;
+    z-index: 3;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
 
-        .letter-envelope.opened .envelope-flap {
-            transform: rotateX(180deg);
-        }
+/* Add envelope back details */
+.envelope-body::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    z-index: 1;
+}
 
-        .letter-paper {
-            position: absolute;
-            top: 20%;
-            left: 10%;
-            right: 10%;
-            height: 60%;
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            font-size: 14px;
-            color: #333;
-            line-height: 1.6;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transform: translateY(100%);
-            transition: transform 1s ease;
-            overflow-y: auto;
-            z-index: 1;
-        }
+.letter-paper {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    right: 10%;
+    height: 70%;
+    background: linear-gradient(145deg, #FFF9F9 0%, #FFF0F5 100%);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    overflow: hidden;
+}
 
-        .letter-envelope.opened .letter-paper {
-            transform: translateY(-20%);
-        }
+/* Add decorative corner to letter */
+.letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, transparent 50%, #FFE4E1 50%);
+    border-radius: 0 15px 0 0;
+}
 
-        .envelope-text {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 15px;
-            color: #FF1493;
-            font-weight: 600;
-        }
+.letter-paper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #FFE4E1 50%, transparent 50%);
+    border-radius: 0 0 0 15px;
+}
+
+.letter-envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.letter-envelope.opened .letter-paper {
+    transform: translateY(-10%);
+    box-shadow: 0 15px 30px rgba(255, 20, 147, 0.2);
+}
+
+/* Love message styling */
+.love-message {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.heart-decor {
+    font-size: 32px;
+    animation: gentle-pulse 2s infinite;
+    display: inline-block;
+}
+
+@keyframes gentle-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.love-text {
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 50%, #FF1493 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.3);
+    letter-spacing: 2px;
+    line-height: 1.2;
+    animation: shimmer 3s infinite;
+    margin: 5px 0;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.name-text {
+    font-size: 48px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+    letter-spacing: 3px;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    margin: 5px 0 10px 0;
+}
+
+.name-text:hover {
+    transform: scale(1.05);
+}
+
+.tiny-hearts {
+    font-size: 20px;
+    color: #FF69B4;
+    animation: float-hearts 3s infinite;
+    letter-spacing: 8px;
+    margin-top: 8px;
+}
+
+@keyframes float-hearts {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Add Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap');
+
+.envelope-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 16px;
+    color: #FF1493;
+    font-weight: 600;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Add envelope shadow and depth */
+.letter-envelope::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    width: 80%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+/* Add a subtle shine effect */
+.envelope-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.letter-envelope:hover .envelope-body::before {
+    left: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .love-text {
+        font-size: 32px;
+    }
+    
+    .name-text {
+        font-size: 38px;
+    }
+    
+    .heart-decor {
+        font-size: 28px;
+    }
+    
+    .letter-envelope {
+        width: 250px;
+        height: 180px;
+    }
+}
 
         /* Progress bar */
         .progress-bar {
@@ -1231,11 +1408,13 @@
                     <div class="envelope-body">
                         <div class="envelope-flap"></div>
                         <div class="letter-paper" id="letterPaper">
-                            <strong style="color: #FF1493;">My Dearest Kavya,</strong><br><br>
-                            Words can never fully capture what you mean to me, but I'll try...<br><br>
-                            You are my sunrise, my moonlight, my everything in between. Every moment with you feels like a beautiful dream I never want to wake up from.<br><br>
-                            I love you more than yesterday, but less than tomorrow. ❤️<br><br>
-                            <em>Forever yours,<br>Your Love</em>
+                            <div class="love-message">
+                                <span class="heart-decor">💝</span>
+                                <span class="love-text">I Love You</span>
+                                <span class="name-text">Kavya</span>
+                                <span class="heart-decor">💝</span>
+                                <div class="tiny-hearts">💕 💕 💕</div>
+                            </div>
                         </div>
                     </div>
                 </div>
