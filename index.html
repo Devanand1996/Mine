@@ -1769,6 +1769,12 @@
             const welcomeScreen = document.getElementById('welcome');
             welcomeScreen.style.display = 'none';
             welcomeScreen.classList.remove('active');
+            
+            // Mark first dot as active
+            const firstDot = document.getElementById('dot1');
+            if (firstDot) {
+                firstDot.classList.add('active');
+            }
         };
 
         // ===== FLOATING HEARTS =====
@@ -1923,8 +1929,11 @@
             const q2 = document.getElementById('q2').value.trim();
             const q3 = document.getElementById('q3').value;
 
+            console.log('Validating Task 1:', { q1, q2, q3 });
+
             if (!q1 || !q2 || !q3) {
                 showError(1);
+                console.log('Validation failed - missing fields');
                 return;
             }
 
@@ -1932,6 +1941,7 @@
             userResponses.favoriteMemory = q2;
             userResponses.firstDate = q3;
 
+            console.log('Task 1 validated! Moving to Task 2...');
             createConfetti();
             completedTasks.push(1);
             updateProgressDot(1);
